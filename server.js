@@ -67,7 +67,7 @@ class BucketFileInterface {
 					net.createServer(function (con) {
 						//console.log('CON',con);
 						console.log('con');
-					    //con.pipe(multilevel.server(sub)).pipe(con);
+					    con.pipe(multilevel.server(sub)).pipe(con);
 					}).listen(3000);
 	            });
 	};
