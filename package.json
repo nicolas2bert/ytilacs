@@ -12,6 +12,7 @@
     "cluster": "^0.7.7",
     "level": "^1.4.0",
     "level-sublevel": "^6.5.4",
+    "levelup-cache": "^2.1.1",
     "multilevel": "^7.3.0",
     "net": "^1.0.2"
   }

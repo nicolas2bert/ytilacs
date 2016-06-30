@@ -6,9 +6,12 @@ const level = require('level');
 const sublevel = require('level-sublevel');
 const multilevel = require('multilevel');
 const cluster = require('cluster');
+const Cache = require('levelup-cache');
 
 
 const METASTORE = '__metastore';
+// DEFAULT CACHE OPTIONS
+const OPTIONS_CACHE = {};
 
 const numCPUs = require('os').cpus().length;
 
@@ -81,6 +84,9 @@ class BucketFileInterface {
 		var con = net.connect(3000);
 		con.pipe(this.subClient.createRpcStream()).pipe(con);
 		this.metastore = this.subClient.sublevel(METASTORE);
+		this.cacheMetastore = new Cache(this.metastore, function(key, cb) {
+            //GETTER FONCTION
+        }, OPTIONS_CACHE);
 	};
 
 	createBucket(bucketName, bucketMD, cb) {
